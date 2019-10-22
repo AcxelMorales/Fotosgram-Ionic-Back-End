@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
  */
 export default class Token {
 
-  private static seed: string = 'ft-seed-prv';
+  private static seed      : string = 'ft-seed-prv';
   private static expiration: string = '2d';
 
   static getJwtToken(payload: any): string {
