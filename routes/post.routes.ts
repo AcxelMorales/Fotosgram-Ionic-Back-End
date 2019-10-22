@@ -1,28 +1,28 @@
-import { Router } from "express";
+import { Router } from 'express';
 
 import { verifyToken } from '../middlewares/auth';
-import * as userController from '../controllers/users.controller';
+import * as postController from '../controllers/post.controller';
 
-const userRoutes = Router();
-
-//****************************************************************************
-//  LOGIN
-//****************************************************************************
-userRoutes.post('/login', userController.login);
+const postRoutes = Router();
 
 //****************************************************************************
-//  CREATE USER IN MONGODB
+//  GET POSTS - PAGINATION
 //****************************************************************************
-userRoutes.post('/create', userController.post);
+postRoutes.get('/list', postController.getAll);
 
 //****************************************************************************
-//  UPDATE A RECORD IN MONGODB
+//  CREATE POST IN MONGODB
 //****************************************************************************
-userRoutes.put('/update', verifyToken, userController.put);
+postRoutes.post('/create', verifyToken, postController.post);
 
 //****************************************************************************
-//  GET TOKEN
+//  UPLOAD FILES - IMG
 //****************************************************************************
-userRoutes.get('/', verifyToken, userController.getToken);
+postRoutes.post('/upload', verifyToken, postController.upload);
 
-export default userRoutes;
+//****************************************************************************
+//  GET IMAGE
+//****************************************************************************
+postRoutes.get('/image/:userid/:img', verifyToken, postController.getImage);
+
+export default postRoutes;

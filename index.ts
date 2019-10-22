@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import fileUpload from 'express-fileupload'; 
 
 import Server from './classes/server';
 import userRoutes from './routes/users.routes';
+import postRoutes from './routes/post.routes';
 
 const server    : Server = new Server();
 const URL_SERVER: string = '/api/v1/ft';
@@ -17,10 +19,13 @@ server.app.use(bodyParser.urlencoded({
 
 server.app.use(bodyParser.json());
 
+server.app.use(fileUpload());
+
 //****************************************************************************
 //  ROUTES
 //****************************************************************************
 server.app.use(`${URL_SERVER}/users`, userRoutes);
+server.app.use(`${URL_SERVER}/posts`, postRoutes);
 
 //****************************************************************************
 //  DATABASE

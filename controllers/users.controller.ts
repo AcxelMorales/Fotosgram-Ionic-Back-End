@@ -139,3 +139,15 @@ export const put = async (req: any, res: Response) => {
     });
   }
 }
+
+//****************************************************************************
+//  GET TOKEN
+//****************************************************************************
+export const getToken = (req: any, res: Response) => {
+  const user = req.user;
+
+  res.status(200).json({
+    ok: true,
+    user
+  });
+}
