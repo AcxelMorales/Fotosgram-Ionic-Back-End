@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload'; 
+import cors from 'cors';
 
 import Server from './classes/server';
 import userRoutes from './routes/users.routes';
@@ -20,6 +21,11 @@ server.app.use(bodyParser.urlencoded({
 server.app.use(bodyParser.json());
 
 server.app.use(fileUpload());
+
+server.app.use(cors({
+  origin     : true,
+  credentials: true
+}));
 
 //****************************************************************************
 //  ROUTES
