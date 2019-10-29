@@ -4,6 +4,11 @@ import bcrypt from 'bcrypt';
 import { User } from '../models/user.model';
 import Token from '../classes/token';
 
+/**
+ * Buscar bien los significados de los códigos de respuesta
+ * ya que en algunas peticiones tenemos incomvenientes.
+ */
+
 //****************************************************************************
 //  LOGIN
 //****************************************************************************
@@ -14,7 +19,7 @@ export const login = (req: Request, res: Response) => {
     if (err) throw err;
 
     if (!userDB) {
-      return res.status(404).json({
+      return res.json({
         ok     : false,
         message: 'Username/Password are not correct'
       });
@@ -33,7 +38,7 @@ export const login = (req: Request, res: Response) => {
         token: userToken
       });
     } else {
-      return res.status(404).json({
+      return res.json({
         ok     : false,
         message: 'Username/Password are not correct ***'
       });

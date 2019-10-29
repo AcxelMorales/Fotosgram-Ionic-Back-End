@@ -15,7 +15,7 @@ const postSchema = new Schema({
   img: [{
     type: String
   }],
-  coods: {
+  coords: {
     type: String
   },
   user: {

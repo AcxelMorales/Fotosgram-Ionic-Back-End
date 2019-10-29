@@ -16,12 +16,12 @@ export const getAll = async (req: Request, res: Response) => {
 
   const posts = await Post.find().sort({ _id: -1 }).skip(skip).limit(10).populate('user', '-password').exec();
 
-  if (posts.length === 0) {
-    return res.status(200).json({
-      ok     : true,
-      message: 'There are no items in the collection'
-    });
-  }
+  // if (posts.length === 0) {
+  //   return res.status(200).json({
+  //     ok     : true,
+  //     message: 'There are no items in the collection'
+  //   });
+  // }
 
   res.json({
     ok: true,
